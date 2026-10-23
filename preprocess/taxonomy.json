@@ -1,0 +1,52 @@
+{
+  "types": [
+    {
+      "id": "DINING",
+      "description": "The intermediate stops include places to eat or drink coffee: restaurants, cafes, delis, food shops."
+    },
+    {
+      "id": "TRANSIT",
+      "description": "The intermediate stops include transport infrastructure: subway or train stations, bus stops, roads, bridges, ferries."
+    },
+    {
+      "id": "HOME",
+      "description": "The intermediate stops include residences: a home, an apartment building, a housing development."
+    },
+    {
+      "id": "NIGHTLIFE",
+      "description": "The intermediate stops include evening social venues: bars, clubs, music venues, lounges."
+    },
+    {
+      "id": "SHOPPING",
+      "description": "The intermediate stops include retail or service errands: stores, malls, banks, post offices, salons."
+    },
+    {
+      "id": "WORK",
+      "description": "The intermediate stops include workplaces: offices, coworking spaces, meeting rooms."
+    },
+    {
+      "id": "OUTDOOR",
+      "description": "The intermediate stops include open-air public space: parks, waterfronts, plazas, gardens, trails."
+    },
+    {
+      "id": "FITNESS",
+      "description": "The intermediate stops include places to exercise: gyms, fitness centres, yoga and athletic facilities."
+    },
+    {
+      "id": "EDUCATION",
+      "description": "The intermediate stops include places of study: campus buildings, schools, libraries."
+    },
+    {
+      "id": "CULTURE",
+      "description": "The intermediate stops include indoor entertainment or cultural venues: cinemas, museums, theatres, stadiums, arcades."
+    },
+    {
+      "id": "TRAVEL",
+      "description": "The intermediate stops include long-distance travel or lodging: airports, hotels, hostels."
+    },
+    {
+      "id": "HEALTH",
+      "description": "The intermediate stops include medical: clinics, hospitals, doctors' and dentists' offices, pharmacies."
+    }
+  ]
+}
