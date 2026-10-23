@@ -10,7 +10,7 @@ pip install -r requirements.txt
 
 ## 1. Data preprocessing
 
-Download `datasets.zip` (raw NYC, TKY and CA data) from the LLM4POI repository (https://github.com/neolifer/LLM4POI.git) and unpack it:
+Download `datasets.zip` (raw NYC, TKY and CA data) from the LLM4POI repository (https://github.com/neolifer/LLM4POI.git):
 
 ```bash
 unzip datasets.zip
@@ -31,17 +31,17 @@ python preprocess/make_gowalla_ca.py --raw_dir raw/ca
 
 The steps below use NYC; replace the city name for the other datasets.
 
-**Step 1. Chronological split** (TKY/CA: infrequent users and POIs removed, 24h trajectory split, 8:1:1 by time; NYC: the publicly released split)
+**Step 1. Chronological split** 
 ```bash
 python preprocess/preprocess.py --city nyc --raw raw/nyc --out_dir data/NYC/work/csv
 ```
 
-**Step 2. Trips** (origin, waypoints, destination; up to 5 previous trips / 30 check-ins as history)
+**Step 2. Trips** 
 ```bash
 python preprocess/build_trips.py --csv_dir data/NYC/work/csv --out_dir data/NYC/work/trips
 ```
 
-**Step 3. Activity labels** (GPT-5-mini, 12 types in `preprocess/taxonomy.json`)
+**Step 3. Activity labels**
 ```bash
 export OPENAI_API_KEY=...
 for s in train valid; do
@@ -50,13 +50,13 @@ for s in train valid; do
 done
 ```
 
-**Step 4. Training data** (prompts, waypoint labels, copy memory, activity labels)
+**Step 4. Training data** 
 ```bash
 python preprocess/build_dataset.py --csv_dir data/NYC/work/csv --trips_dir data/NYC/work/trips \
   --labels_dir labels/NYC --out_dir data/NYC
 ```
 
-**Step 5. LightGCN user embeddings** (train user–POI graph)
+**Step 5. LightGCN user embeddings** 
 ```bash
 python preprocess/lightgcn.py --trips_dir data/NYC/work/trips --vocab data/NYC/main/poi_vocab.json \
   --out data/NYC/user_lgcn_d64.npz
@@ -116,4 +116,3 @@ python predict.py --data_dir $D/main --route_matrix $D/route_car.npz --user_emb 
 python evaluate.py $O/test_predictions.jsonl
 ```
 
-Every stage trains for 3 epochs (4 trips per step, 4 accumulation steps) and validates every 200 updates. Stage 1 keeps the checkpoint with the lowest validation loss; Stages 2 and 3 keep the one with the highest validation NDCG@20.
