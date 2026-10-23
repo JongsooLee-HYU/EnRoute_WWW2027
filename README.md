@@ -1,8 +1,6 @@
 # EnRoute
 
 ## Setup
-
-- Python 3.10, one 80 GB GPU
 - Access to `meta-llama/Llama-3.1-8B-Instruct` on Hugging Face (`huggingface-cli login`)
 - Docker (OSRM travel-time matrix)
 
