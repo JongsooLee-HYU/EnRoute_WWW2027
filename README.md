@@ -11,6 +11,7 @@ pip install -r requirements.txt
 ## 1. Data preprocessing
 
 Download `datasets.zip` (raw NYC, TKY and CA data) from the LLM4POI repository (https://github.com/neolifer/LLM4POI.git):
+The Hyundai vehicle-navigation dataset used in our experiments is proprietary and cannot be publicly released due to confidentiality and corporate data-sharing restrictions. Therefore, it is not included in this repository. 
 
 ```bash
 unzip datasets.zip
@@ -102,7 +103,7 @@ D=data/NYC; O=outputs/NYC
 # Stage 1: activity pretraining
 python pretrain.py --data_dir $D/pretrain --output_dir $O/stage1
 
-# Stage 2: relevance head, temporal copy memory, detour scoring
+# Stage 2: relevance head, temporal revisit memory, detour scoring
 python train.py --stage 2 --data_dir $D/main --route_matrix $D/route_car.npz \
   --init_lora $O/stage1 --output_dir $O/stage2
 
